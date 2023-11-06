@@ -6,17 +6,23 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="EurekaServer" />
+        <module name="Book" />
         <module name="Library" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="ApiGatewayLibrary" target="17" />
+      <module name="Book" target="17" />
+      <module name="EurekaServer" target="17" />
       <module name="Library" target="17" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="ApiGatewayLibrary" options="-parameters" />
+      <module name="Book" options="-parameters" />
+      <module name="EurekaServer" options="-parameters" />
       <module name="Library" options="-parameters" />
     </option>
   </component>

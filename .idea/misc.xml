@@ -5,6 +5,8 @@
       <list>
         <option value="$PROJECT_DIR$/ApiGatewayLibrary/pom.xml" />
         <option value="$PROJECT_DIR$/Library/pom.xml" />
+        <option value="$PROJECT_DIR$/EurekaServer/pom.xml" />
+        <option value="$PROJECT_DIR$/Book/pom.xml" />
       </list>
     </option>
   </component>
