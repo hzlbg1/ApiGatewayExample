@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+import java.util.logging.Level;
 
 @RestController
 @RequestMapping("/api/v1/book")
@@ -21,7 +22,6 @@ import java.util.List;
 public class BookController {
     private final BookService bookService;
     Logger logger = LoggerFactory.getLogger(BookController.class);
-
 
     public BookController(BookService bookService) {
         this.bookService = bookService;
@@ -34,7 +34,7 @@ public class BookController {
 
     @GetMapping("/isbn/{isbn}")
     public ResponseEntity<BookIdDTO> getBookByIsbn(@PathVariable @NotEmpty String isbn) {
-        logger.info("Book requested by isbn: " + isbn );
+        logger.info("Book requested by isbn: {0}", isbn );
         return ResponseEntity.ok(bookService.findByIsbn(isbn));
     }
 

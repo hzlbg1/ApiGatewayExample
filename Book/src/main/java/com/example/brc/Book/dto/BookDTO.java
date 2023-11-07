@@ -5,27 +5,25 @@ import com.example.brc.Book.model.Book;
 import java.io.Serializable;
 
 public class BookDTO implements Serializable {
-    private String id;
+    private BookIdDTO id;
     private String title;
     private String bookYear;
     private String author;
     private String pressName;
-    private String isbn;
 
-    public BookDTO(String id, String title, String bookYear, String author, String pressName, String isbn) {
+    public BookDTO(BookIdDTO id, String title, String bookYear, String author, String pressName) {
         this.id = id;
         this.title = title;
         this.bookYear = bookYear;
         this.author = author;
         this.pressName = pressName;
-        this.isbn = isbn;
     }
 
-    public String getId() {
+    public BookIdDTO getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(BookIdDTO id) {
         this.id = id;
     }
 
@@ -61,15 +59,7 @@ public class BookDTO implements Serializable {
         this.pressName = pressName;
     }
 
-    public String getIsbn() {
-        return isbn;
-    }
-
-    public void setIsbn(String isbn) {
-        this.isbn = isbn;
-    }
-
     public static BookDTO convertBookToBookDTO(Book book) {
-        return new BookDTO(book.getId(), book.getTitle(), book.getBookYear(), book.getAuthor(), book.getPressName(), book.getIsbn());
+        return new BookDTO(BookIdDTO.convert(book.getId(), book.getIsbn()), book.getTitle(), book.getBookYear(), book.getAuthor(), book.getPressName());
     }
 }

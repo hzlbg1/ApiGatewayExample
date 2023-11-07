@@ -30,10 +30,10 @@ public class LibraryController {
         this.environment = environment;
     }
 
-//    @GetMapping("{id}")
-//    public ResponseEntity<LibraryDTO> getLibraryById(@PathVariable String id) {
-//        return ResponseEntity.ok(libraryService.getAllBooksInLibraryById(id));
-//    }
+    @GetMapping("{id}")
+    public ResponseEntity<LibraryDTO> getLibraryById(@PathVariable String id) {
+        return ResponseEntity.ok(libraryService.getAllBooksInLibraryById(id));
+    }
 
     @PostMapping
     public ResponseEntity<LibraryDTO> createLibrary() {

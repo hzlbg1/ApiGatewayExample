@@ -1,29 +1,32 @@
 package com.example.brc.Book.model;
 
 import jakarta.persistence.*;
+import org.hibernate.annotations.GenericGenerator;
+
 import java.io.Serializable;
 
 @Entity
 @Table(name = "book")
 public class Book implements Serializable {
-
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id")
+    @GeneratedValue(generator = "UUID", strategy = GenerationType.UUID)
+    @GenericGenerator(name = "UUID")
     private String id;
 
-    @Column(name = "Title")
+    @Column(name = "title")
     private String title;
 
-    @Column(name = "BookYear")
+    @Column(name = "book_year")
     private String bookYear;
 
-    @Column(name = "Author")
+    @Column(name = "author")
     private String author;
 
-    @Column(name = "PressName")
+    @Column(name = "press_name")
     private String pressName;
 
-    @Column(name = "ISBN")
+    @Column(name = "isbn")
     private String isbn;
 
     public String getId() {

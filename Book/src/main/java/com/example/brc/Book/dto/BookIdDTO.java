@@ -1,7 +1,6 @@
 package com.example.brc.Book.dto;
 
 import java.io.Serializable;
-
 public class BookIdDTO implements Serializable {
     private String id;
     private String isbn;
@@ -27,7 +26,7 @@ public class BookIdDTO implements Serializable {
         this.isbn = isbn;
     }
 
-    public BookIdDTO convert(String id, String isbn) {
+    public static BookIdDTO convert(String id, String isbn) {
         return new BookIdDTO(id, isbn);
     }
 

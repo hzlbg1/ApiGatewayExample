@@ -9,6 +9,11 @@ public class BookDTO implements Serializable {
     private String author;
     private String pressName;
     private String isbn;
+    private BookIdDTO bookIdDTO;
+
+    public BookDTO(BookIdDTO bookIdDTO) {
+        this.bookIdDTO = bookIdDTO;
+    }
 
     public String getId() {
         return id;
@@ -56,5 +61,13 @@ public class BookDTO implements Serializable {
 
     public void setIsbn(String isbn) {
         this.isbn = isbn;
+    }
+
+    public BookIdDTO getBookIdDTO() {
+        return bookIdDTO;
+    }
+
+    public void setBookIdDTO(BookIdDTO bookIdDTO) {
+        this.bookIdDTO = bookIdDTO;
     }
 }
