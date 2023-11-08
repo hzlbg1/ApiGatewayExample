@@ -1,5 +1,6 @@
 package com.example.brc.Library.controller;
 
+import com.example.brc.Library.dto.AddBookRequest;
 import com.example.brc.Library.dto.LibraryDTO;
 import com.example.brc.Library.model.Library;
 import com.example.brc.Library.service.LibraryService;
@@ -21,8 +22,8 @@ public class LibraryController {
     private final LibraryService libraryService;
     private final Environment environment;
 
-    @Value("${library-service.book.count}")
-    private String count;
+//    @Value("${library-service.book.count}")
+//    private String count;
 
     public LibraryController(LibraryService libraryService, Environment environment) {
         this.libraryService = libraryService;
@@ -35,25 +36,28 @@ public class LibraryController {
     }
     @GetMapping("{id}")
     public ResponseEntity<LibraryDTO> getLibraryById(@PathVariable String id) {
+        return ResponseEntity.ok(libraryService.getLibraryById(id));
+    }
+
+    @GetMapping("books/{id}")
+    public ResponseEntity<LibraryDTO> getAllBooksInLibraryById(@PathVariable String id) {
         return ResponseEntity.ok(libraryService.getAllBooksInLibraryById(id));
     }
 
     @PostMapping
-    public ResponseEntity<LibraryDTO> createLibrary(@RequestBody Library library) {
+    public ResponseEntity<LibraryDTO> createLibrary() {
         logger.info("Library created on port number " + environment.getProperty("local.server.port"));
-        return ResponseEntity.ok(libraryService.createLibrary(library));
+        return ResponseEntity.ok(libraryService.createLibrary());
     }
 
-//    @PutMapping
-//    public ResponseEntity<Void> addBookToLibrary(@RequestBody AddBookRequest request) {
-//        libraryService.addBookToLibrary(request);
-//        return ResponseEntity.ok().build();
+    @PutMapping
+    public ResponseEntity<Void> addBookToLibrary(@RequestBody AddBookRequest request) {
+        libraryService.addBookToLibrary(request);
+        return ResponseEntity.ok().build();
+    }
+
+//    @GetMapping("/count")
+//    public ResponseEntity<String> getCount() {
+//        return ResponseEntity.ok("Library count is" + count);
 //    }
-
-
-
-    @GetMapping("/count")
-    public ResponseEntity<String> getCount() {
-        return ResponseEntity.ok("Library count is" + count);
-    }
 }

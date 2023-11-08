@@ -7,10 +7,8 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 @SpringBootApplication
 @EnableFeignClients
 public class LibraryApplication {
-
 	public static void main(String[] args) {
 		SpringApplication.run(LibraryApplication.class, args);
-		System.out.println("test library app");
 	}
 
 }

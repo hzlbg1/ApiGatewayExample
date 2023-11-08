@@ -2,7 +2,6 @@ package com.example.brc.Book.controller;
 
 import com.example.brc.Book.dto.BookDTO;
 import com.example.brc.Book.dto.BookIdDTO;
-import com.example.brc.Book.exception.BookNotFoundException;
 import com.example.brc.Book.service.BookService;
 import jakarta.validation.constraints.NotEmpty;
 import org.slf4j.Logger;
@@ -15,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
-import java.util.logging.Level;
 
 @RestController
 @RequestMapping("/api/v1/book")

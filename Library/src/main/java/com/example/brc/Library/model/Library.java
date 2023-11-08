@@ -4,17 +4,21 @@ import jakarta.persistence.*;
 import org.hibernate.annotations.GenericGenerator;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
+
 @Entity
 @Table(name = "library")
 public class Library implements Serializable {
     @Id
+    @GeneratedValue(generator = "UUID")
+    @GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
     @Column(name = "id")
     private String id;
 
-//    @ElementCollection
+    //    @ElementCollection
     @Column(name = "user_book")
-    private List<String> userBook;
+    private List<String> userBook = new ArrayList<>();
 
     public String getId() {
         return id;

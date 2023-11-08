@@ -9,6 +9,8 @@ import java.io.Serializable;
 @Table(name = "book")
 public class Book implements Serializable {
     @Id
+    @GeneratedValue(generator = "UUID")
+    @GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
     @Column(name = "id")
     private String id;
 
