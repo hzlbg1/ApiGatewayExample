@@ -6,7 +6,6 @@ import java.io.Serializable;
 import java.util.List;
 
 public class LibraryDTO implements Serializable {
-
     private String id;
     private List<String> userBookMap;
 

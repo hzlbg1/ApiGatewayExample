@@ -3,7 +3,6 @@ package com.example.brc.Library.dto;
 import java.io.Serializable;
 
 public class AddBookRequest implements Serializable {
-
     private String id;
     private String isbn;
 

@@ -25,7 +25,7 @@ public class BookService {
 
     public BookIdDTO findByIsbn(String isbn) {
         return bookRepository
-                .getBookByIsbn(isbn) // Todo: findBookByIsbn?
+                .getBookByIsbn(isbn)
                 .map(book -> BookIdDTO.convert(book.getId(), book.getIsbn()))
                 .orElseThrow(() -> new BookNotFoundException("Book could not found by isbn: " + isbn));
     }

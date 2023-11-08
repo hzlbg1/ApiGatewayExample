@@ -1,18 +1,19 @@
 package com.example.brc.Library.model;
 
 import jakarta.persistence.*;
+import org.hibernate.annotations.GenericGenerator;
 
 import java.io.Serializable;
 import java.util.List;
-
 @Entity
 @Table(name = "library")
 public class Library implements Serializable {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id")
     private String id;
 
-    @Column(name = "UserBook")
+//    @ElementCollection
+    @Column(name = "user_book")
     private List<String> userBook;
 
     public String getId() {

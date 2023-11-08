@@ -10,8 +10,6 @@ import java.io.Serializable;
 public class Book implements Serializable {
     @Id
     @Column(name = "id")
-    @GeneratedValue(generator = "UUID", strategy = GenerationType.UUID)
-    @GenericGenerator(name = "UUID")
     private String id;
 
     @Column(name = "title")

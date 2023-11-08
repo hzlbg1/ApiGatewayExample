@@ -1,7 +1,7 @@
 package com.example.brc.Library.controller;
 
-import com.example.brc.Library.dto.AddBookRequest;
 import com.example.brc.Library.dto.LibraryDTO;
+import com.example.brc.Library.model.Library;
 import com.example.brc.Library.service.LibraryService;
 import org.springframework.core.env.Environment;
 import org.slf4j.Logger;
@@ -17,7 +17,6 @@ import java.util.List;
 @RefreshScope
 @RequestMapping("/api/v1/library")
 public class LibraryController {
-
     Logger logger = LoggerFactory.getLogger(LibraryController.class);
     private final LibraryService libraryService;
     private final Environment environment;
@@ -30,16 +29,19 @@ public class LibraryController {
         this.environment = environment;
     }
 
+    @GetMapping
+    public ResponseEntity<List<LibraryDTO>> getAllLibraries() {
+        return ResponseEntity.ok(libraryService.getAllLibraries());
+    }
     @GetMapping("{id}")
     public ResponseEntity<LibraryDTO> getLibraryById(@PathVariable String id) {
         return ResponseEntity.ok(libraryService.getAllBooksInLibraryById(id));
     }
 
     @PostMapping
-    public ResponseEntity<LibraryDTO> createLibrary() {
+    public ResponseEntity<LibraryDTO> createLibrary(@RequestBody Library library) {
         logger.info("Library created on port number " + environment.getProperty("local.server.port"));
-
-        return ResponseEntity.ok(libraryService.createLibrary());
+        return ResponseEntity.ok(libraryService.createLibrary(library));
     }
 
 //    @PutMapping
@@ -48,10 +50,7 @@ public class LibraryController {
 //        return ResponseEntity.ok().build();
 //    }
 
-    @GetMapping
-    public ResponseEntity<List<String>> getAllLibraries() {
-        return ResponseEntity.ok(libraryService.getAllLibraries());
-    }
+
 
     @GetMapping("/count")
     public ResponseEntity<String> getCount() {

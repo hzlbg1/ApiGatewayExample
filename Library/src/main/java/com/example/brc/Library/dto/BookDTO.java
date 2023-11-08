@@ -3,23 +3,21 @@ package com.example.brc.Library.dto;
 import java.io.Serializable;
 
 public class BookDTO implements Serializable {
-    private String id;
+    private BookIdDTO id;
     private String title;
     private String bookYear;
     private String author;
     private String pressName;
-    private String isbn;
-    private BookIdDTO bookIdDTO;
 
-    public BookDTO(BookIdDTO bookIdDTO) {
-        this.bookIdDTO = bookIdDTO;
+    public BookDTO(BookIdDTO id) {
+        this.id = id;
     }
 
-    public String getId() {
+    public BookIdDTO getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(BookIdDTO id) {
         this.id = id;
     }
 
@@ -53,21 +51,5 @@ public class BookDTO implements Serializable {
 
     public void setPressName(String pressName) {
         this.pressName = pressName;
-    }
-
-    public String getIsbn() {
-        return isbn;
-    }
-
-    public void setIsbn(String isbn) {
-        this.isbn = isbn;
-    }
-
-    public BookIdDTO getBookIdDTO() {
-        return bookIdDTO;
-    }
-
-    public void setBookIdDTO(BookIdDTO bookIdDTO) {
-        this.bookIdDTO = bookIdDTO;
     }
 }

@@ -2,6 +2,7 @@ package com.example.brc.Book.controller;
 
 import com.example.brc.Book.dto.BookDTO;
 import com.example.brc.Book.dto.BookIdDTO;
+import com.example.brc.Book.exception.BookNotFoundException;
 import com.example.brc.Book.service.BookService;
 import jakarta.validation.constraints.NotEmpty;
 import org.slf4j.Logger;
@@ -38,7 +39,7 @@ public class BookController {
         return ResponseEntity.ok(bookService.findByIsbn(isbn));
     }
 
-    @GetMapping("/book/{id}")
+    @GetMapping("/id/{id}")
     public ResponseEntity<BookDTO> getBookById(@PathVariable @NotEmpty String id) {
         return ResponseEntity.ok(bookService.findBookDetailsById(id));
     }
