@@ -14,21 +14,21 @@ import org.springframework.web.bind.annotation.PathVariable;
 public interface BookServiceClient {
     Logger logger = LoggerFactory.getLogger(BookServiceClient.class);
     @GetMapping("/isbn/{isbn}")
-//    @CircuitBreaker(name = "getBookByIsbnCircuitBreaker", fallbackMethod = "getBookFallback")
+    @CircuitBreaker(name = "getBookByIsbnCircuitBreaker", fallbackMethod = "getBookFallback")
     ResponseEntity<BookIdDTO> getBookByIsbn(@PathVariable(value = "isbn") String isbn);
 
-//    default ResponseEntity<BookIdDTO> getBookFallback(String isbn, Exception exception) {
-//        logger.info("Book not found by isbn " + isbn + ", returning default BookDto object");
-//        return ResponseEntity.ok(new BookIdDTO("default-book", "default-isbn"));
-//    }
+    default ResponseEntity<BookIdDTO> getBookFallback(String isbn, Exception exception) {
+        logger.info("Book not found by isbn " + isbn + ", returning default BookDto object");
+        return ResponseEntity.ok(new BookIdDTO("default-book", "default-isbn"));
+    }
 
     @GetMapping("/id/{id}")
-//    @CircuitBreaker(name = "getBookByIdCircuitBreaker", fallbackMethod = "getBookByIdFallback")
+    @CircuitBreaker(name = "getBookByIdCircuitBreaker", fallbackMethod = "getBookByIdFallback")
     ResponseEntity<BookDTO> getBookById(@PathVariable(value = "id") String bookId);
 
-//    default ResponseEntity<BookDTO> getBookByIdFallback(String bookId, Exception exception) {
-//        logger.info("Book not found by id " + bookId + ", returning default BookDto object");
-//        return ResponseEntity.ok(new BookDTO(new BookIdDTO("default-book", "isbn")));
-//    }
+    default ResponseEntity<BookDTO> getBookByIdFallback(String bookId, Exception exception) {
+        logger.info("Book not found by id " + bookId + ", returning default BookDto object");
+        return ResponseEntity.ok(new BookDTO(new BookIdDTO("default-book2", "isbn2")));
+    }
 
 }

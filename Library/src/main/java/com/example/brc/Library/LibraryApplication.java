@@ -14,8 +14,4 @@ public class LibraryApplication {
 		SpringApplication.run(LibraryApplication.class, args);
 	}
 
-	@Bean
-	public ErrorDecoder errorDecoder()  {
-		return new RetrieveMessageErrorDecoder();
-	}
 }
